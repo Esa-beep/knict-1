@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/kfdykme/knict#readme",
   "devDependencies": {
+    "chai": "^4.3.4",
     "ts-loader": "^8.1.0",
     "typescript": "^4.2.3",
     "webpack": "^5.30.0",
