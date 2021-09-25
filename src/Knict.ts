@@ -26,7 +26,7 @@ const logger: any = (() => {
 /**
  * 尝试搞个简化能自动生成对应文档的electron ipc方式
  */
-class Knict {
+export class Knict {
     static proxy: any = {}
 
     static funcs: any[] = []
@@ -257,5 +257,3 @@ export { path, get }
 export { SendIpc, addon, str, number }
 
 export { cppParser, cppConfig, ICppConfig }
-
-export default Knict
