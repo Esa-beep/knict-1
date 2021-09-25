@@ -1,8 +1,8 @@
 {
   "name": "knict",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "��#\u0000 \u0000k\u0000n\u0000i\u0000c\u0000t\u0000\r\u0000 \u0000",
-  "main": "index.js",
+  "main": "bin/index.js",
   "scripts": {
     "build": "npx webpack --config ./webpack/webpack.config.js && node ./dist/bundle.js",
     "tsc": "tsc",
