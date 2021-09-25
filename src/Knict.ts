@@ -1,3 +1,5 @@
+import { IKnictClientBuilder } from "./client/KnictClientBuidler"
+
 console.info('knict')
 
 const FUNCTION_TYPE_IPC_SEND = 'type_ipc_send'
@@ -35,6 +37,13 @@ class Knict {
 
     static isOutputKnict: boolean = false
 
+    private static Builder ?:IKnictClientBuilder
+
+    static builder(builder: IKnictClientBuilder):Knict {
+        this.Builder = builder
+        return this
+    }
+
     static init(conf: KnictConf) {
         Knict.ipc = conf.ipcRenderer
         Knict.addonInvokeMethod = conf.addonInvoke
@@ -71,6 +80,8 @@ class Knict {
                     args.push(arguments[pos])
                 }
                 const k = func.knict
+
+                Knict.Builder?.build(k)                
 
                 for (let path in func.knict.path) {
                     // logger.info('buildFuncProxy path', path)

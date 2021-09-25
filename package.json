@@ -4,7 +4,8 @@
   "description": "��#\u0000 \u0000k\u0000n\u0000i\u0000c\u0000t\u0000\r\u0000 \u0000",
   "main": "index.js",
   "scripts": {
-    "test": "npx webpack --config ./webpack/webpack.config.js && node ./dist/bundle.js"
+    "test": "npx webpack --config ./webpack/webpack.config.js && node ./dist/bundle.js",
+    "tsc": "tsc"
   },
   "repository": {
     "type": "git",
