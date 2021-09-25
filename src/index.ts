@@ -5,5 +5,6 @@ import * as KnictBuilder from './client/KnictClientBuidler'
 
 export default {
     ...Knict,
-    ...KnictBuilder
+    ...KnictBuilder,
+    DemoIpcService
 }
