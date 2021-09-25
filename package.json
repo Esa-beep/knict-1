@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npx webpack --config ./webpack/webpack.config.js && node ./dist/bundle.js",
-    "tsc": "tsc"
+    "tsc": "tsc --declaration"
   },
   "repository": {
     "type": "git",

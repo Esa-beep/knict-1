@@ -7,4 +7,4 @@ Knict.builder(new KnictConsoleClientBuilder())
 const wedriveIpcInstance = Knict.create<DemoIpcService>(new DemoIpcService())
 
 
-wedriveIpcInstance.openAbc("", "", "", 0)
+// wedriveIpcInstance.openAbc("", "", "", 0)
