@@ -79,8 +79,8 @@ export class Knict {
                 for (let pos = 0; pos < arguments.length; pos++) {
                     args.push(arguments[pos])
                 }
+                func.knict.args = args
                 const k = func.knict
-
                 Knict.Builder?.build(k)                
 
                 for (let path in func.knict.path) {

@@ -1,10 +1,10 @@
 import DemoIpcService from './DemoIpcService'
-import * as Knict from './Knict'
+import * as KnictM from './Knict'
 import * as KnictBuilder from './client/KnictClientBuidler'
 
 
-export default {
-    ...Knict,
+export const Knict =  {
+    ...KnictM,
     ...KnictBuilder,
     DemoIpcService
 }
