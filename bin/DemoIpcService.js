@@ -12,10 +12,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var Knict_1 = require("./Knict");
-var DemoIpcService = /** @class */ (function () {
-    function DemoIpcService() {
-    }
+const Knict_1 = require("./Knict");
+class DemoIpcService {
     /**
      *
      * @param spaceId
@@ -23,17 +21,16 @@ var DemoIpcService = /** @class */ (function () {
      * @param fileId
      * @param scence
      */
-    DemoIpcService.prototype.openAbc = function (spaceId, folderId, fileId, scence) { };
-    __decorate([
-        Knict_1.addon(),
-        __param(0, Knict_1.str('aa')),
-        __param(1, Knict_1.str('bb')),
-        __param(2, Knict_1.str('cc')),
-        __param(3, Knict_1.number('dd')),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [String, String, String, Number]),
-        __metadata("design:returntype", Object)
-    ], DemoIpcService.prototype, "openAbc", null);
-    return DemoIpcService;
-}());
+    openAbc(spaceId, folderId, fileId, scence) { }
+}
+__decorate([
+    Knict_1.addon(),
+    __param(0, Knict_1.str('aa')),
+    __param(1, Knict_1.str('bb')),
+    __param(2, Knict_1.str('cc')),
+    __param(3, Knict_1.number('dd')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String, String, Number]),
+    __metadata("design:returntype", Object)
+], DemoIpcService.prototype, "openAbc", null);
 exports.default = DemoIpcService;

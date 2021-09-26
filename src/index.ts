@@ -3,7 +3,7 @@ import * as KnictM from './Knict'
 import * as KnictBuilder from './client/KnictClientBuidler'
 
 
-export const Knict =  {
+export = {
     ...KnictM,
     ...KnictBuilder,
     DemoIpcService

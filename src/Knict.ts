@@ -37,9 +37,9 @@ export class Knict {
 
     static isOutputKnict: boolean = false
 
-    private static Builder ?:IKnictClientBuilder
+    private static Builder?: IKnictClientBuilder
 
-    static builder(builder: IKnictClientBuilder):Knict {
+    static builder(builder: IKnictClientBuilder): Knict {
         this.Builder = builder
         return this
     }
@@ -52,15 +52,29 @@ export class Knict {
 
     static create<T>(cls: T): T {
         let others: any = {}
+        let hasMemberFunctionInCls = false
+        
+        const clsInstance = (new (cls as any)())
+        Object.getOwnPropertyNames(Object.getPrototypeOf(clsInstance)).forEach((i: string) => {
+            if (i !== 'constructor') {
+                (cls as any)[i] = clsInstance[i]
+            }
+        })
+
+        logger.log('Knict create', cls)
         for (let x in cls) {
             logger.log('Knict create', 'typeof x', x, typeof cls[x])
             if (typeof cls[x] === 'function') {
                 this.funcs.push(cls[x])
+                hasMemberFunctionInCls = true
             } else if (x === 'cppParserName' || x === 'cppConfig') {
                 others[x] = cls[x]
             } else {
                 logger.error('Knict create else:', x, cls[x])
             }
+        }
+        if (!hasMemberFunctionInCls) {
+            // throw new Error('Member Function Not Found!')
         }
         logger.log('Knict Knict.funcs', this.funcs)
         this.proxy = cls
@@ -81,8 +95,10 @@ export class Knict {
                 }
                 func.knict.args = args
                 const k = func.knict
-                Knict.Builder?.build(k)                
-
+                let builderRes = Knict.Builder?.build(k)
+                if (builderRes) {
+                    return builderRes
+                }
                 for (let path in func.knict.path) {
                     // logger.info('buildFuncProxy path', path)
                     func.knict.get = func.knict.get.replace('{' + path + '}', args[func.knict.path[path]])

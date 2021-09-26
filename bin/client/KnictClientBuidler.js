@@ -1,24 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.KnictConsoleClientBuilder = exports.KnictBasicClientBuilder = void 0;
-var KnictBasicClientBuilder = /** @class */ (function () {
-    function KnictBasicClientBuilder() {
-    }
-    KnictBasicClientBuilder.prototype.build = function (k) {
-        return (function () {
+class KnictBasicClientBuilder {
+    build(k) {
+        return (() => {
         })();
-    };
-    return KnictBasicClientBuilder;
-}());
-exports.KnictBasicClientBuilder = KnictBasicClientBuilder;
-var KnictConsoleClientBuilder = /** @class */ (function () {
-    function KnictConsoleClientBuilder() {
     }
-    KnictConsoleClientBuilder.prototype.build = function (k) {
-        return (function () {
+}
+exports.KnictBasicClientBuilder = KnictBasicClientBuilder;
+class KnictConsoleClientBuilder {
+    build(k) {
+        return (() => {
             console.info('KnictClientBuilder', 'build', k);
         })();
-    };
-    return KnictConsoleClientBuilder;
-}());
+    }
+}
 exports.KnictConsoleClientBuilder = KnictConsoleClientBuilder;

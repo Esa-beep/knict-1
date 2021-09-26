@@ -1,7 +1,7 @@
 import DemoIpcService from './DemoIpcService';
 import * as KnictM from './Knict';
 import * as KnictBuilder from './client/KnictClientBuidler';
-export declare const Knict: {
+declare const _default: {
     DemoIpcService: typeof DemoIpcService;
     KnictBasicClientBuilder: typeof KnictBuilder.KnictBasicClientBuilder;
     KnictConsoleClientBuilder: typeof KnictBuilder.KnictConsoleClientBuilder;
@@ -15,3 +15,4 @@ export declare const Knict: {
     cppParser: typeof KnictM.cppParser;
     cppConfig: typeof KnictM.cppConfig;
 };
+export = _default;
