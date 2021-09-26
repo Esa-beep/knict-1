@@ -11,7 +11,7 @@ Knict.builder(new KnictConsoleClientBuilder())
 
 describe('Just Try Console', () => {
     const demoIpcService = new DemoIpcService() 
-    const demo = Knict.create(DemoIpcService)
+    const demo = Knict.create(demoIpcService)
     let hasX = false
     console.info(demo)
 
@@ -21,6 +21,7 @@ describe('Just Try Console', () => {
             // console.info('x', x, typeof demoIpcService, typeof demoIpcService[x])
             // assert((demoIpcService + '') === 'DemoIpcService {}')
             // expect(typeof demoIpcService )
+            console.info(demo[x], typeof demo[x])
             assert(typeof demo[x] === 'function')
         }
     })
@@ -28,4 +29,10 @@ describe('Just Try Console', () => {
         expect(hasX)
         assert(hasX)
     })
+
+    it('demo openAbc', () => {
+        demo.openAbc('', '', '', 0)
+    })
+
+
 })

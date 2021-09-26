@@ -50,19 +50,21 @@ export class Knict {
         Knict.isOutputKnict = conf.isOutputKnict ? conf.isOutputKnict : false
     }
 
-    static create<T>(cls: T): T {
+    static create<T>(basecls: T): T {
         let others: any = {}
         let hasMemberFunctionInCls = false
-        
-        const clsInstance = (new (cls as any)())
-        Object.getOwnPropertyNames(Object.getPrototypeOf(clsInstance)).forEach((i: string) => {
+         
+        let cls:any = new Object() as any
+        Object.getOwnPropertyNames(Object.getPrototypeOf(basecls)).forEach((i: string) => {
             if (i !== 'constructor') {
-                (cls as any)[i] = clsInstance[i]
-            }
+                // Object.defineProperty(cls, i,  (basecls as any)[i] ) 
+                cls[i] = (basecls as any)[i]
+            } 
         })
 
         logger.log('Knict create', cls)
         for (let x in cls) {
+            console.info('a')
             logger.log('Knict create', 'typeof x', x, typeof cls[x])
             if (typeof cls[x] === 'function') {
                 this.funcs.push(cls[x])
@@ -77,7 +79,7 @@ export class Knict {
             // throw new Error('Member Function Not Found!')
         }
         logger.log('Knict Knict.funcs', this.funcs)
-        this.proxy = cls
+        this.proxy = cls 
         Knict.buildFuncProxy()
         return {
             ...this.proxy,

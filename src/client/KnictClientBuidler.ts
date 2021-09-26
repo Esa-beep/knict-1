@@ -15,7 +15,7 @@ export class KnictBasicClientBuilder implements IKnictClientBuilder {
 export class KnictConsoleClientBuilder implements IKnictClientBuilder {
     build(k:any):any {
         return (() => {
-            console.info('KnictClientBuilder', 'build', k)
+            console.info('KnictConsoleClientBuilder', 'console', k)
         })()
     }
 }

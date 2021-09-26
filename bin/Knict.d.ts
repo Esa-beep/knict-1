@@ -16,7 +16,7 @@ export declare class Knict {
     private static Builder?;
     static builder(builder: IKnictClientBuilder): Knict;
     static init(conf: KnictConf): void;
-    static create<T>(cls: T): T;
+    static create<T>(basecls: T): T;
     static buildFuncProxy(): void;
 }
 declare function get(url: string): (target: any, propertyKey: string, descriptor: PropertyDescriptor) => void;

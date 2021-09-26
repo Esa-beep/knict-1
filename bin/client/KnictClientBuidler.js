@@ -11,7 +11,7 @@ exports.KnictBasicClientBuilder = KnictBasicClientBuilder;
 class KnictConsoleClientBuilder {
     build(k) {
         return (() => {
-            console.info('KnictClientBuilder', 'build', k);
+            console.info('KnictConsoleClientBuilder', 'console', k);
         })();
     }
 }

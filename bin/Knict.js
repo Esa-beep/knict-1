@@ -28,17 +28,19 @@ class Knict {
         Knict.addonInvokeMethod = conf.addonInvoke;
         Knict.isOutputKnict = conf.isOutputKnict ? conf.isOutputKnict : false;
     }
-    static create(cls) {
+    static create(basecls) {
         let others = {};
         let hasMemberFunctionInCls = false;
-        const clsInstance = (new cls());
-        Object.getOwnPropertyNames(Object.getPrototypeOf(clsInstance)).forEach((i) => {
+        let cls = new Object();
+        Object.getOwnPropertyNames(Object.getPrototypeOf(basecls)).forEach((i) => {
             if (i !== 'constructor') {
-                cls[i] = clsInstance[i];
+                // Object.defineProperty(cls, i,  (basecls as any)[i] ) 
+                cls[i] = basecls[i];
             }
         });
         logger.log('Knict create', cls);
         for (let x in cls) {
+            console.info('a');
             logger.log('Knict create', 'typeof x', x, typeof cls[x]);
             if (typeof cls[x] === 'function') {
                 this.funcs.push(cls[x]);
