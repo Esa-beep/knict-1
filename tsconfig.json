@@ -8,5 +8,6 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "allowJs": true
-  }
+  },
+  "exclude": ["./bin", "./dist"]
 }

@@ -11,7 +11,8 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Knict = void 0;
 var DemoIpcService_1 = require("./DemoIpcService");
-var Knict = require("./Knict");
+var KnictM = require("./Knict");
 var KnictBuilder = require("./client/KnictClientBuidler");
-exports.default = __assign(__assign(__assign({}, Knict), KnictBuilder), { DemoIpcService: DemoIpcService_1.default });
+exports.Knict = __assign(__assign(__assign({}, KnictM), KnictBuilder), { DemoIpcService: DemoIpcService_1.default });

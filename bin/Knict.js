@@ -75,6 +75,7 @@ var Knict = /** @class */ (function () {
                 for (var pos = 0; pos < arguments.length; pos++) {
                     args.push(arguments[pos]);
                 }
+                func.knict.args = args;
                 var k = func.knict;
                 (_a = Knict.Builder) === null || _a === void 0 ? void 0 : _a.build(k);
                 for (var path_1 in func.knict.path) {
