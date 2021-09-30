@@ -64,7 +64,6 @@ export class Knict {
 
         logger.log('Knict create', cls)
         for (let x in cls) {
-            console.info('a')
             logger.log('Knict create', 'typeof x', x, typeof cls[x])
             if (typeof cls[x] === 'function') {
                 this.funcs.push(cls[x])
