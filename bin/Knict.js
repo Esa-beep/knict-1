@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.cppConfig = exports.cppParser = exports.number = exports.str = exports.addon = exports.SendIpc = exports.get = exports.path = exports.Knict = void 0;
-console.info('knict');
 const FUNCTION_TYPE_IPC_SEND = 'type_ipc_send';
 const FUNCTION_TYPE_IPC_SEND_BRIDGE = 'type_ipc_send_bridge';
 const FUNCTION_TYPE_ADDON = 'addon';
@@ -15,6 +14,7 @@ const logger = (() => {
         return { log: () => { }, info: () => { }, error: () => { } };
     }
 })();
+logger.info('knict');
 /**
  * 尝试搞个简化能自动生成对应文档的electron ipc方式
  */

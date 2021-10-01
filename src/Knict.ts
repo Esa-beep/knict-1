@@ -1,6 +1,5 @@
 import { IKnictClientBuilder } from "./client/KnictClientBuidler"
 
-console.info('knict')
 
 const FUNCTION_TYPE_IPC_SEND = 'type_ipc_send'
 const FUNCTION_TYPE_IPC_SEND_BRIDGE = 'type_ipc_send_bridge'
@@ -22,6 +21,7 @@ const logger: any = (() => {
         return { log: () => { }, info: () => { }, error: () => { } }
     }
 })()
+logger.info('knict')
 
 /**
  * 尝试搞个简化能自动生成对应文档的electron ipc方式
