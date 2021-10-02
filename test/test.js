@@ -6,12 +6,12 @@ console.info('Knict Test Start')
 
 console.info( KnictConsoleClientBuilder)
 
-Knict.builder(new KnictConsoleClientBuilder())
+const knict = Knict.builder(new KnictConsoleClientBuilder())
 
 
 describe('Just Try Console', () => {
     const demoIpcService = new DemoIpcService() 
-    const demo = Knict.create(demoIpcService)
+    const demo = knict.create(demoIpcService)
     let hasX = false
     console.info(demo)
 

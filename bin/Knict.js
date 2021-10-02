@@ -19,16 +19,21 @@ logger.info('knict');
  * 尝试搞个简化能自动生成对应文档的electron ipc方式
  */
 class Knict {
+    constructor() {
+        this.proxy = {};
+        this.funcs = [];
+    }
     static builder(builder) {
-        this.Builder = builder;
-        return this;
+        const instance = new Knict();
+        instance.Builder = builder;
+        return instance;
     }
     static init(conf) {
         Knict.ipc = conf.ipcRenderer;
         Knict.addonInvokeMethod = conf.addonInvoke;
         Knict.isOutputKnict = conf.isOutputKnict ? conf.isOutputKnict : false;
     }
-    static create(basecls) {
+    create(basecls) {
         let others = {};
         let hasMemberFunctionInCls = false;
         let cls = new Object();
@@ -57,10 +62,10 @@ class Knict {
         }
         logger.log('Knict Knict.funcs', this.funcs);
         this.proxy = cls;
-        Knict.buildFuncProxy();
+        this.buildFuncProxy();
         return Object.assign(Object.assign({}, this.proxy), others);
     }
-    static buildFuncProxy() {
+    buildFuncProxy() {
         this.funcs.forEach((func) => {
             logger.log('buildFuncProxy func', func, 'func.knict', func.knict);
             this.proxy[func.knict.name] = function () {
@@ -71,7 +76,7 @@ class Knict {
                 }
                 func.knict.args = args;
                 const k = func.knict;
-                let builderRes = (_a = Knict.Builder) === null || _a === void 0 ? void 0 : _a.build(k);
+                let builderRes = (_a = this.Builder) === null || _a === void 0 ? void 0 : _a.build(k);
                 if (builderRes) {
                     return builderRes;
                 }
@@ -113,8 +118,6 @@ class Knict {
     }
 }
 exports.Knict = Knict;
-Knict.proxy = {};
-Knict.funcs = [];
 Knict.isOutputKnict = false;
 function get(url) {
     logger.log('Knictget(): evaluated');

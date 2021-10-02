@@ -27,9 +27,9 @@ logger.info('knict')
  * 尝试搞个简化能自动生成对应文档的electron ipc方式
  */
 export class Knict {
-    static proxy: any = {}
+    proxy: any = {}
 
-    static funcs: any[] = []
+    funcs: any[] = []
 
     static ipc?: any
 
@@ -37,11 +37,12 @@ export class Knict {
 
     static isOutputKnict: boolean = false
 
-    private static Builder?: IKnictClientBuilder
+    private Builder?: IKnictClientBuilder
 
     static builder(builder: IKnictClientBuilder): Knict {
-        this.Builder = builder
-        return this
+        const instance = new Knict()
+        instance.Builder = builder
+        return instance
     }
 
     static init(conf: KnictConf) {
@@ -50,7 +51,7 @@ export class Knict {
         Knict.isOutputKnict = conf.isOutputKnict ? conf.isOutputKnict : false
     }
 
-    static create<T>(basecls: T): T {
+    create<T>(basecls: T): T {
         let others: any = {}
         let hasMemberFunctionInCls = false
          
@@ -79,14 +80,14 @@ export class Knict {
         }
         logger.log('Knict Knict.funcs', this.funcs)
         this.proxy = cls 
-        Knict.buildFuncProxy()
+        this.buildFuncProxy()
         return {
             ...this.proxy,
             ...others
         } as T
     }
 
-    static buildFuncProxy() {
+    buildFuncProxy() {
         this.funcs.forEach((func: any) => {
             logger.log('buildFuncProxy func', func, 'func.knict', func.knict)
             this.proxy[func.knict.name] = function () {
@@ -96,7 +97,7 @@ export class Knict {
                 }
                 func.knict.args = args
                 const k = func.knict
-                let builderRes = Knict.Builder?.build(k)
+                let builderRes = this.Builder?.build(k)
                 if (builderRes) {
                     return builderRes
                 }

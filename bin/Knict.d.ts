@@ -8,16 +8,16 @@ interface KnictConf {
  * 尝试搞个简化能自动生成对应文档的electron ipc方式
  */
 export declare class Knict {
-    static proxy: any;
-    static funcs: any[];
+    proxy: any;
+    funcs: any[];
     static ipc?: any;
     private static addonInvokeMethod?;
     static isOutputKnict: boolean;
-    private static Builder?;
+    private Builder?;
     static builder(builder: IKnictClientBuilder): Knict;
     static init(conf: KnictConf): void;
-    static create<T>(basecls: T): T;
-    static buildFuncProxy(): void;
+    create<T>(basecls: T): T;
+    buildFuncProxy(): void;
 }
 declare function get(url: string): (target: any, propertyKey: string, descriptor: PropertyDescriptor) => void;
 declare function path(path: string): (target: any, propertyKey: string | symbol, parameterIndex: number) => void;
