@@ -5,7 +5,7 @@ const FUNCTION_TYPE_IPC_SEND = 'type_ipc_send';
 const FUNCTION_TYPE_IPC_SEND_BRIDGE = 'type_ipc_send_bridge';
 const FUNCTION_TYPE_ADDON = 'addon';
 const FUNCTION_TYPE_IPC_ON = 'type_ipc_on';
-const isLogOpen = false;
+let isLogOpen = false;
 const logger = (() => {
     if (isLogOpen) {
         return console;
@@ -66,17 +66,17 @@ class Knict {
         return Object.assign(Object.assign({}, this.proxy), others);
     }
     buildFuncProxy() {
+        const currentBuilder = this.Builder;
         this.funcs.forEach((func) => {
             logger.log('buildFuncProxy func', func, 'func.knict', func.knict);
             this.proxy[func.knict.name] = function () {
-                var _a;
                 let args = [];
                 for (let pos = 0; pos < arguments.length; pos++) {
                     args.push(arguments[pos]);
                 }
                 func.knict.args = args;
                 const k = func.knict;
-                let builderRes = (_a = this.Builder) === null || _a === void 0 ? void 0 : _a.build(k);
+                let builderRes = currentBuilder === null || currentBuilder === void 0 ? void 0 : currentBuilder.build(k);
                 if (builderRes) {
                     return builderRes;
                 }
@@ -119,6 +119,9 @@ class Knict {
 }
 exports.Knict = Knict;
 Knict.isOutputKnict = false;
+Knict.toggleLog = () => {
+    isLogOpen = !isLogOpen;
+};
 function get(url) {
     logger.log('Knictget(): evaluated');
     return function (target, propertyKey, descriptor) {

@@ -13,7 +13,8 @@ export declare class Knict {
     static ipc?: any;
     private static addonInvokeMethod?;
     static isOutputKnict: boolean;
-    private Builder?;
+    Builder?: IKnictClientBuilder;
+    static toggleLog: () => void;
     static builder(builder: IKnictClientBuilder): Knict;
     static init(conf: KnictConf): void;
     create<T>(basecls: T): T;

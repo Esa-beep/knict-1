@@ -13,7 +13,6 @@ describe('Just Try Console', () => {
     const demoIpcService = new DemoIpcService() 
     const demo = knict.create(demoIpcService)
     let hasX = false
-    console.info(demo)
 
     it('demo Function is ok', () => {
         for (let x in demo) {
@@ -31,7 +30,10 @@ describe('Just Try Console', () => {
     })
 
     it('demo openAbc', () => {
-        demo.openAbc('', '', '', 0)
+        const res  = demo.openAbc('', '', '', 0)
+        // console.info('openAbc res', res)
+
+        assert(res !== undefined)
     })
 
 

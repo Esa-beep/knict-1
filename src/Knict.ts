@@ -12,7 +12,7 @@ interface KnictConf {
     isOutputKnict?: boolean
 }
 
-const isLogOpen = false
+let isLogOpen = false
 
 const logger: any = (() => {
     if (isLogOpen) {
@@ -37,7 +37,11 @@ export class Knict {
 
     static isOutputKnict: boolean = false
 
-    private Builder?: IKnictClientBuilder
+    Builder?: IKnictClientBuilder
+
+    static toggleLog = () => {
+        isLogOpen = !isLogOpen
+    }
 
     static builder(builder: IKnictClientBuilder): Knict {
         const instance = new Knict()
@@ -88,6 +92,7 @@ export class Knict {
     }
 
     buildFuncProxy() {
+        const currentBuilder = this.Builder
         this.funcs.forEach((func: any) => {
             logger.log('buildFuncProxy func', func, 'func.knict', func.knict)
             this.proxy[func.knict.name] = function () {
@@ -97,7 +102,7 @@ export class Knict {
                 }
                 func.knict.args = args
                 const k = func.knict
-                let builderRes = this.Builder?.build(k)
+                let builderRes = currentBuilder?.build(k)
                 if (builderRes) {
                     return builderRes
                 }
