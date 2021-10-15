@@ -1,6 +1,6 @@
 {
   "name": "knict",
-  "version": "0.2.3",
+  "version": "0.2.5",
   "description": "��#\u0000 \u0000k\u0000n\u0000i\u0000c\u0000t\u0000\r\u0000 \u0000",
   "main": "bin/index.js",
   "scripts": {
