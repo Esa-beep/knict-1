@@ -23,13 +23,13 @@ function addon() {
 function str(key) {
     logger_1.logger.log('Knict str(): evaluated');
     return KnictBase.BaseAnotaionForParam((targetMethod, propertyKey, parameterIndex) => {
-        if (targetMethod.knict.data == undefined) {
-            targetMethod.knict.data = new Object();
-        }
-        if (targetMethod.knict.data.str == undefined) {
-            targetMethod.knict.data.str = new Object();
-        }
-        targetMethod.knict.data.str[key] = parameterIndex;
+        let str = {};
+        str[key] = parameterIndex;
+        return {
+            data: {
+                str
+            }
+        };
     });
 }
 function number(key) {

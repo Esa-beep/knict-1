@@ -18,13 +18,13 @@ function addon() {
 function str(key: string) {
     logger.log('Knict str(): evaluated')
     return KnictBase.BaseAnotaionForParam((targetMethod: KnictBase.IDataTargetMethod, propertyKey: string | symbol, parameterIndex: number) => {
-        if (targetMethod.knict.data == undefined) {
-            targetMethod.knict.data = new Object()
+        let str: any = {}
+        str[key] = parameterIndex
+        return {
+            data: {
+                str
+            }
         }
-        if (targetMethod.knict.data.str == undefined) {
-            targetMethod.knict.data.str = new Object()
-        }
-        targetMethod.knict.data.str[key] = parameterIndex
     })
 }
 
